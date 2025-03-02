@@ -3,7 +3,20 @@ package com.spring.cpf_validator_back.core;
 public class CPFValidator {
 
     public static boolean isValidCPF(String cpf) {
-        if (cpf == null || cpf.length() != 11 || !cpf.matches("\\d{11}")) {
+        if (cpf == null) {
+            return false;
+        }
+
+        // Remove quaisquer caracteres não numéricos (pontos, hífens, etc.)
+        cpf = cpf.replaceAll("\\D", "");
+
+        // Verifica se o CPF possui 11 dígitos
+        if (cpf.length() != 11) {
+            return false;
+        }
+
+        // Verifica se todos os dígitos são iguais (caso inválido)
+        if (cpf.matches("(\\d)\\1{10}")) {
             return false;
         }
 

@@ -1,6 +1,8 @@
 package com.spring.cpf_validator_back.server;
 
 import com.spring.cpf_validator_back.core.CPFValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -8,12 +10,13 @@ import java.net.*;
 
 @Component
 public class UDPServer {
+    private static final Logger logger = LoggerFactory.getLogger(UDPServer.class);
 
     public static void main(String[] args) {
         int port = 54321;
 
         try (DatagramSocket socket = new DatagramSocket(port)) {
-            System.out.println("Servidor UDP iniciado na porta " + port);
+            logger.info("Servidor UDP iniciado na porta {}", port);
 
             byte[] buffer = new byte[1024];
 
