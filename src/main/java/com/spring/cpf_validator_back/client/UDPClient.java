@@ -27,7 +27,7 @@ public class UDPClient {
 
             String response = new String(responsePacket.getData(), 0, responsePacket.getLength());
             logger.info("Resposta do UDPServer: {}", response);
-            return response != null && response.contains("válido");
+            return !response.toLowerCase().contains("inválido");
         } catch (IOException e) {
             logger.error("Erro na comunicação UDP: ", e);
             return false;

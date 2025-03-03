@@ -24,7 +24,7 @@ public class TCPClient {
 
             String response = in.readLine();
             logger.info("Resposta do TCPServer: {}", response);
-            return response != null && response.contains("válido");
+            return !response.toLowerCase().contains("inválido");
         } catch (IOException e) {
             logger.error("Erro na conexão TCP: ", e);
             return false;

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CpfValidatorBackApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CpfValidatorBackApplication.class, args);
 	}
 

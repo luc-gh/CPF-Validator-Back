@@ -21,8 +21,6 @@ public class CPFController {
     public ResponseEntity<Map<String, Object>> validateCPF(@RequestParam String cpf, @RequestParam String protocol) {
         logger.info("Requisição recebida para validar CPF: {} com protocolo: {}", cpf, protocol);
         boolean isValid = cpfValidationService.validateCPF(cpf, protocol);
-        String message = isValid ? "CPF válido" : "CPF inválido";
-        logger.info("Enviando resposta: {}", message);
-        return ResponseEntity.ok(Map.of("valid", isValid, "message", message));
+        return ResponseEntity.ok(Map.of("valid", isValid, "message", isValid ? "CPF válido" : "CPF inválido"));
     }
 }
